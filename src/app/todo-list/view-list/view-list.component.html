@@ -1,0 +1,13 @@
+<li [ngClass]="{'list-group-item': true, 
+      'list-group-item-success': etat == 'fait', 
+      'list-group-item-warning': etat == 'à faire'}">
+    <p>À faire avant le : {{ deadline }}</p>
+    <h3>{{ intitule }}</h3>
+    <div class="btn-toolbar pull-righ">
+        <button class=" btn btn-success " [disabled]="etat=='fait' " (click)="fait() ">Fait</button>
+        <button class="btn btn-warning " [disabled]="etat=='à faire' " (click)="afaire() ">À faire</button>
+        <button class="btn btn-danger " (click)="delete() ">Supprimer</button>
+        <button class="btn btn-default "><a href="modif/{{id}}">Modifier</a></button>
+    </div>
+</li>
+<br>

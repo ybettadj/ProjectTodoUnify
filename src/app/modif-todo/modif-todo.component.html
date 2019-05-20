@@ -1,0 +1,11 @@
+<form (ngSubmit)="onSubmit(f)" #f="ngForm">
+    <div class="form-group">
+        <label for="title"><h2>Modifier Todo</h2></label><br>
+        <label class="col-2 col-form-label">Nouvel intutilé :</label>
+        <input type="text" class="form-control" id="intitule" name="intitule" ngModel required><br>
+        <label class="col-2 col-form-label">À faire avant le:</label>
+        <input class="form-control" type="datetime-local" value="2019-05-23T13:45:00" id="deadline" name="deadline" ngModel>
+        <br>
+        <button type="submit" class="btn btn-primary">Modifier ce todo</button>
+    </div>
+</form>

@@ -1,0 +1,31 @@
+<div class="container-fluid">
+    <app-todo-form></app-todo-form>
+</div>
+<br>
+<div class="text-center">
+    <ul class="list-group">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="panel panel-warning">
+                    <div class="panel-heading">
+                        <h3>À faire :</h3>
+                    </div>
+                    <div class="panel-body">
+                        <app-view-list *ngFor="let todo of this.todosAFaire; let i = index" [intitule]="this.todosAFaire[i].intitule" [deadline]="this.todosAFaire[i].deadline" [etat]="this.todosAFaire[i].etat" [id]="this.todosAFaire[i].id"></app-view-list>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <h3>Fait :</h3>
+                    </div>
+                    <div class="panel-body">
+                        <app-view-list *ngFor="let todo of this.todosFait; let y = index" [intitule]="this.todosFait[y].intitule" [deadline]="this.todosFait[y].deadline" [etat]="this.todosFait[y].etat" [id]="this.todosFait[y].id"></app-view-list>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </ul>
+</div>
