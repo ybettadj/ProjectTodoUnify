@@ -16,13 +16,10 @@ export class TodoFormComponent implements OnInit {
 
   }
 
-  id = 0;
-
   postTodoOnServer(todo: {id: number; intitule: string; deadline: string; etat: string;}){
-    this.httpClient.post('https://http-client-docunify.firebaseio.com/listTodo.json', todo).subscribe(
+    this.httpClient.post('https://http-client-docunify.firebaseio.com/listTodo.json', todo)
+    .subscribe(
         () => {
-        console.log("enregistrement terminé")
-        console.log(todo)
         location.reload();
       },
         (error) => {
@@ -41,10 +38,6 @@ export class TodoFormComponent implements OnInit {
     };
     todo.intitule = form.value.intitule;
     todo.deadline = form.value.deadline;
-    console.log(todo)
     this.postTodoOnServer(todo);
   }
-  
-
-  
 }

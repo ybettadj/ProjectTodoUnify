@@ -19,7 +19,6 @@ export class TodoListComponent implements OnInit {
     this.getTodoFromServer()
   }
 
-  str: string;
   getTodoFromServer(){
     let promise = new Promise((resolve, reject) => {
       this.httpClient.get<any[]>('https://http-client-docunify.firebaseio.com/listTodo.json')
@@ -27,7 +26,6 @@ export class TodoListComponent implements OnInit {
       .then(
         res => {
           this.todos = res
-          console.log(res)
         }
       )
       .then(
@@ -41,7 +39,6 @@ export class TodoListComponent implements OnInit {
             } else if (this.todos[todo].etat == "fait"){
               this.todos[todo].id = todo;
               this.todosFait.push(this.todos[todo]);
-              console.log(this.todosFait)
             }else if (this.todos[todo].etat == "rate"){
               this.todos[todo].id = todo;
               this.todosRate.push(this.todos[todo]);

@@ -7,7 +7,7 @@
         <button class=" btn btn-success " [disabled]="etat=='fait' " (click)="fait() ">Fait</button>
         <button class="btn btn-warning " [disabled]="etat=='à faire' " (click)="afaire() ">À faire</button>
         <button class="btn btn-danger " (click)="delete() ">Supprimer</button>
-        <button class="btn btn-default "><a href="modif/{{id}}">Modifier</a></button>
+        <button class="btn btn-default" (click)="redirectModif([id])">Modifier</button>
     </div>
 </li>
 <br>

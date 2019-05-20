@@ -13,7 +13,7 @@
                         <input class="form-control" type="datetime-local" value="2019-05-23T13:45:00" id="deadline" name="deadline" ngModel>
                         <br>
                         <div class="text-center">
-                            <button type="submit" class="btn btn-primary">Potser ce todo</button>
+                            <button type="submit" class="btn btn-primary" [disabled]="f.invalid">Potser ce todo</button>
                         </div>
                     </div>
                 </div>

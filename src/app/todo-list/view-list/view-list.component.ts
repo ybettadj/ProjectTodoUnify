@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AppComponent } from 'src/app/app.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-view-list',
@@ -9,7 +10,7 @@ import { AppComponent } from 'src/app/app.component';
 })
 export class ViewListComponent implements OnInit {
 
-  constructor(private httpClient: HttpClient, private appComponent: AppComponent) { }
+  constructor(private httpClient: HttpClient, private appComponent: AppComponent, private router: Router) { }
 
   ngOnInit() {
   }
@@ -20,9 +21,9 @@ export class ViewListComponent implements OnInit {
   @Input() id: string;
 
   fait(){
-    this.httpClient.patch('https://http-client-docunify.firebaseio.com/listTodo/' +this.id + '.json', {'etat': 'fait'}).subscribe(
+    this.httpClient.patch('https://http-client-docunify.firebaseio.com/listTodo/' +this.id + '.json', {'etat': 'fait'})
+    .subscribe(
       () => {
-      console.log("modification terminé")
       location.reload();
     },
       (error) => {
@@ -32,9 +33,9 @@ export class ViewListComponent implements OnInit {
   }
 
   delete(){
-    this.httpClient.delete('https://http-client-docunify.firebaseio.com/listTodo/' +this.id + '.json').subscribe(
+    this.httpClient.delete('https://http-client-docunify.firebaseio.com/listTodo/' +this.id + '.json')
+    .subscribe(
       () => {
-      console.log("Suppression terminé")
       location.reload();
     },
       (error) => {
@@ -44,15 +45,19 @@ export class ViewListComponent implements OnInit {
   }
 
   afaire(){
-      this.httpClient.patch('https://http-client-docunify.firebaseio.com/listTodo/' +this.id + '.json', {'etat': 'à faire'}).subscribe(
+      this.httpClient.patch('https://http-client-docunify.firebaseio.com/listTodo/' +this.id + '.json', {'etat': 'à faire'})
+      .subscribe(
         () => {
-        console.log("modification terminé")
         location.reload();
       },
         (error) => {
           console.log(error);
         }
       );
+  }
+
+  redirectModif(id: string){
+    this.router.navigate(['modif/' + id]);
   }
 
 }

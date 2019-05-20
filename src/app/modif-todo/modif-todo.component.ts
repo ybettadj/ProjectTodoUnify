@@ -11,7 +11,9 @@ import { ActivatedRoute } from "@angular/router";
 })
 export class ModifTodoComponent implements OnInit {
 
-  constructor(private httpClient: HttpClient, private router: Router, private activatedRoute: ActivatedRoute) { }
+  constructor(private httpClient: HttpClient, 
+              private router: Router, 
+              private activatedRoute: ActivatedRoute) { }
 
   id: string;
   ngOnInit() {
@@ -27,12 +29,9 @@ export class ModifTodoComponent implements OnInit {
     };
     newTodo.intitule = form.value.intitule;
     newTodo.deadline = form.value.deadline;
-    console.log(newTodo)
-    console.log(this.id)
     this.httpClient.patch('https://http-client-docunify.firebaseio.com/listTodo/' + this.id + ".json", {'intitule': newTodo.intitule, 'deadline': newTodo.deadline})
     .subscribe(
       () => {
-        console.log("Modification terminé !")
         this.router.navigate(['/todo']);
       },
       (error) => {
